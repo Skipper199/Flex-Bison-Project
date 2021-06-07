@@ -4,6 +4,17 @@ PROGRAM abc
 
 
 FUNCTION omegacringe(INT a, CHAR b)
-VARS INT int1, int2;
+
+
+
+
+
+VARS INT int1, int2; 
+
+
+
+
+
+VARS CHAR char1, char2;
 
 END_FUNCTION

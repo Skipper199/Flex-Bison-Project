@@ -49,40 +49,43 @@ expressions: expression
            | expressions expression
            ;
 
-expression: /* empty */
+expression: NEWLINE
           | function
-          | newline
           ;
-
-newline: NEWLINE
-       | newline NEWLINE
-       ;
 
 program: PROGRAM ID
        ;
 
-function: FUNCTION ID OP parameters CP newline functionBody newline END_FUNCTION
+newlines: NEWLINE
+        | newlines NEWLINE
+        ;
+
+optionalNewLines: /* empty */
+                | newlines
+                ;
+
+function: FUNCTION ID OP parameters CP newlines mulVars  END_FUNCTION
         ;
 
 parameters: /* empty */
-          | arg arg 
-          | parameters COMMA arg arg
+          | type ID 
+          | parameters COMMA type ID
           ;
 
-arg: INT 
-   | CHAR
-   | ID
-   ;
-
-functionBody: VARS vars SC
-            ;
-
-
-vars: INT ID 
-    | CHAR ID
-    | vars COMMA ID
+type: INT 
+    | CHAR
     ;
 
+mulVars: vars 
+       | mulVars vars 
+       ; 
+
+vars: VARS type csv SC optionalNewLines
+    ;
+
+csv: ID
+   | csv COMMA ID
+   ; 
 
 %%
 
