@@ -20,6 +20,15 @@
 
 %token PROGRAM
 %token NEWLINE
+%token FUNCTION
+%token END_FUNCTION
+%token INT
+%token COMMA
+%token CHAR
+%token OP
+%token CP
+%token SC
+%token VARS
 
 
 %token<t_str> ID
@@ -36,16 +45,43 @@
 root: program expressions
     ;
 
-expressions: expression NEWLINE
+expressions: expression
            | expressions expression
            ;
 
-expression: 
+expression: /* empty */
+          | function
+          | newline
           ;
 
-program: PROGRAM ID
-    ;
+newline: NEWLINE
+       | newline NEWLINE
+       ;
 
+program: PROGRAM ID
+       ;
+
+function: FUNCTION ID OP parameters CP newline functionBody newline END_FUNCTION
+        ;
+
+parameters: /* empty */
+          | arg arg 
+          | parameters COMMA arg arg
+          ;
+
+arg: INT 
+   | CHAR
+   | ID
+   ;
+
+functionBody: VARS vars SC
+            ;
+
+
+vars: INT ID 
+    | CHAR ID
+    | vars COMMA ID
+    ;
 
 
 %%
