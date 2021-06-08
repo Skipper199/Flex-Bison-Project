@@ -1,20 +1,13 @@
 PROGRAM abc
 
-
-
-
 FUNCTION omegacringe(INT a, CHAR b)
 
-
-
-
-
-VARS INT int1, int2; 
-
-
-
-
-
+VARS INT int1, int2[4], intArray; 
 VARS CHAR char1, char2;
 
+RETURN int1;
+
 END_FUNCTION
+
+STARTMAIN
+ENDMAIN

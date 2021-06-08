@@ -63,9 +63,15 @@ extern int yydebug;
     CHAR = 264,                    /* CHAR  */
     OP = 265,                      /* OP  */
     CP = 266,                      /* CP  */
-    SC = 267,                      /* SC  */
-    VARS = 268,                    /* VARS  */
-    ID = 269                       /* ID  */
+    OB = 267,                      /* OB  */
+    CB = 268,                      /* CB  */
+    SC = 269,                      /* SC  */
+    VARS = 270,                    /* VARS  */
+    integer = 271,                 /* integer  */
+    RETURN = 272,                  /* RETURN  */
+    STARTMAIN = 273,               /* STARTMAIN  */
+    ENDMAIN = 274,                 /* ENDMAIN  */
+    ID = 275                       /* ID  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -82,9 +88,15 @@ extern int yydebug;
 #define CHAR 264
 #define OP 265
 #define CP 266
-#define SC 267
-#define VARS 268
-#define ID 269
+#define OB 267
+#define CB 268
+#define SC 269
+#define VARS 270
+#define integer 271
+#define RETURN 272
+#define STARTMAIN 273
+#define ENDMAIN 274
+#define ID 275
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -96,7 +108,7 @@ union YYSTYPE
     int t_int;
     float t_float;
 
-#line 100 "y.tab.h"
+#line 112 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

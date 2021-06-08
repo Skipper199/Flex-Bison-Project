@@ -27,9 +27,14 @@
 %token CHAR
 %token OP
 %token CP
+%token OB
+%token CB
 %token SC
 %token VARS
-
+%token integer
+%token RETURN
+%token STARTMAIN
+%token ENDMAIN
 
 %token<t_str> ID
 
@@ -42,7 +47,7 @@
 
 
 
-root: program expressions
+root: program expressions main
     ;
 
 expressions: expression
@@ -64,7 +69,10 @@ optionalNewLines: /* empty */
                 | newlines
                 ;
 
-function: FUNCTION ID OP parameters CP newlines mulVars  END_FUNCTION
+main: STARTMAIN expressions ENDMAIN optionalNewLines
+    ;
+
+function: FUNCTION ID OP parameters CP newlines mulVars return END_FUNCTION
         ;
 
 parameters: /* empty */
@@ -76,6 +84,9 @@ type: INT
     | CHAR
     ;
 
+return: RETURN ID SC optionalNewLines
+      ;
+
 mulVars: vars 
        | mulVars vars 
        ; 
@@ -85,6 +96,8 @@ vars: VARS type csv SC optionalNewLines
 
 csv: ID
    | csv COMMA ID
+   | ID OB integer CB
+   | csv COMMA ID OB integer CB
    ; 
 
 %%
