@@ -1,9 +1,20 @@
 PROGRAM abc
 
-FUNCTION Omegacringe(INT a, CHAR b)
-var1 =  4 ;
+FUNCTION omegacringe(INT a, CHAR b)
+VARS INT var1, var2[2];
+VARS CHAR var3, var4[5];
 
-RETURN int1
+var1 =  var1;
+
+WHILE(var1 > var2) 
+
+
+
+var2 = var1 + 3;
+
+ENDWHILE
+
+RETURN var1
 
 END_FUNCTION
 

@@ -13,8 +13,7 @@
 
 %option noyywrap
 %option yylineno
-
-
+      
 id                          [_a-zA-Z][_a-zA-Z0-9]*
 integer                     [0-9]+
 
@@ -38,6 +37,13 @@ integer                     [0-9]+
 "/"                         {printf("%s\n", yytext); return DIV;}
 
 "="                         {printf("%s\n", yytext); return ASSIGN;}
+"=="                        {printf("%s\n", yytext); return EQUAL;}
+"!="                        {printf("%s\n", yytext); return NOT_EQUAL;}
+"<"                         {printf("%s\n", yytext); return LOWER_THAN;}
+">"                         {printf("%s\n", yytext); return GREATER_THAN;}
+
+"WHILE"                     {printf("%s\n", yytext); return WHILE;}
+"ENDWHILE"                  {printf("%s\n", yytext); return ENDWHILE;}
 "INT"                       {printf("%s\n", yytext); return INT;}
 "CHAR"                      {printf("%s\n", yytext); return CHAR;}
 "FUNCTION"                  {printf("%s\n", yytext); return FUNCTION;}

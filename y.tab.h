@@ -73,12 +73,18 @@ extern int yydebug;
     SQ = 274,                      /* SQ  */
     DQ = 275,                      /* DQ  */
     ASSIGN = 276,                  /* ASSIGN  */
-    VARS = 277,                    /* VARS  */
-    RETURN = 278,                  /* RETURN  */
-    STARTMAIN = 279,               /* STARTMAIN  */
-    ENDMAIN = 280,                 /* ENDMAIN  */
-    ID = 281,                      /* ID  */
-    INTEGER = 282                  /* INTEGER  */
+    EQUAL = 277,                   /* EQUAL  */
+    NOT_EQUAL = 278,               /* NOT_EQUAL  */
+    LOWER_THAN = 279,              /* LOWER_THAN  */
+    GREATER_THAN = 280,            /* GREATER_THAN  */
+    WHILE = 281,                   /* WHILE  */
+    ENDWHILE = 282,                /* ENDWHILE  */
+    VARS = 283,                    /* VARS  */
+    RETURN = 284,                  /* RETURN  */
+    STARTMAIN = 285,               /* STARTMAIN  */
+    ENDMAIN = 286,                 /* ENDMAIN  */
+    ID = 287,                      /* ID  */
+    INTEGER = 288                  /* INTEGER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -105,12 +111,18 @@ extern int yydebug;
 #define SQ 274
 #define DQ 275
 #define ASSIGN 276
-#define VARS 277
-#define RETURN 278
-#define STARTMAIN 279
-#define ENDMAIN 280
-#define ID 281
-#define INTEGER 282
+#define EQUAL 277
+#define NOT_EQUAL 278
+#define LOWER_THAN 279
+#define GREATER_THAN 280
+#define WHILE 281
+#define ENDWHILE 282
+#define VARS 283
+#define RETURN 284
+#define STARTMAIN 285
+#define ENDMAIN 286
+#define ID 287
+#define INTEGER 288
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -120,8 +132,9 @@ union YYSTYPE
 
     char *t_str;
     int t_int;
+    float t_float;
 
-#line 125 "y.tab.h"
+#line 138 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
