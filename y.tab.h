@@ -59,19 +59,26 @@ extern int yydebug;
     FUNCTION = 260,                /* FUNCTION  */
     END_FUNCTION = 261,            /* END_FUNCTION  */
     INT = 262,                     /* INT  */
-    COMMA = 263,                   /* COMMA  */
-    CHAR = 264,                    /* CHAR  */
-    OP = 265,                      /* OP  */
-    CP = 266,                      /* CP  */
-    OB = 267,                      /* OB  */
-    CB = 268,                      /* CB  */
-    SC = 269,                      /* SC  */
-    VARS = 270,                    /* VARS  */
-    integer = 271,                 /* integer  */
-    RETURN = 272,                  /* RETURN  */
-    STARTMAIN = 273,               /* STARTMAIN  */
-    ENDMAIN = 274,                 /* ENDMAIN  */
-    ID = 275                       /* ID  */
+    ADD = 263,                     /* ADD  */
+    SUB = 264,                     /* SUB  */
+    MUL = 265,                     /* MUL  */
+    DIV = 266,                     /* DIV  */
+    COMMA = 267,                   /* COMMA  */
+    CHAR = 268,                    /* CHAR  */
+    OP = 269,                      /* OP  */
+    CP = 270,                      /* CP  */
+    OB = 271,                      /* OB  */
+    CB = 272,                      /* CB  */
+    SC = 273,                      /* SC  */
+    SQ = 274,                      /* SQ  */
+    DQ = 275,                      /* DQ  */
+    ASSIGN = 276,                  /* ASSIGN  */
+    VARS = 277,                    /* VARS  */
+    RETURN = 278,                  /* RETURN  */
+    STARTMAIN = 279,               /* STARTMAIN  */
+    ENDMAIN = 280,                 /* ENDMAIN  */
+    ID = 281,                      /* ID  */
+    INTEGER = 282                  /* INTEGER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -84,19 +91,26 @@ extern int yydebug;
 #define FUNCTION 260
 #define END_FUNCTION 261
 #define INT 262
-#define COMMA 263
-#define CHAR 264
-#define OP 265
-#define CP 266
-#define OB 267
-#define CB 268
-#define SC 269
-#define VARS 270
-#define integer 271
-#define RETURN 272
-#define STARTMAIN 273
-#define ENDMAIN 274
-#define ID 275
+#define ADD 263
+#define SUB 264
+#define MUL 265
+#define DIV 266
+#define COMMA 267
+#define CHAR 268
+#define OP 269
+#define CP 270
+#define OB 271
+#define CB 272
+#define SC 273
+#define SQ 274
+#define DQ 275
+#define ASSIGN 276
+#define VARS 277
+#define RETURN 278
+#define STARTMAIN 279
+#define ENDMAIN 280
+#define ID 281
+#define INTEGER 282
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -106,9 +120,8 @@ union YYSTYPE
 
     char *t_str;
     int t_int;
-    float t_float;
 
-#line 112 "y.tab.h"
+#line 125 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

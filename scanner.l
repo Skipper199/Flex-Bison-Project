@@ -14,6 +14,7 @@
 %option noyywrap
 %option yylineno
 
+
 id                          [_a-zA-Z][_a-zA-Z0-9]*
 integer                     [0-9]+
 
@@ -28,6 +29,15 @@ integer                     [0-9]+
 ")"                         {printf("%s\n", yytext); return CP;}
 "["                         {printf("%s\n", yytext); return OB;}
 "]"                         {printf("%s\n", yytext); return CB;}
+"'"                         {printf("%s\n", yytext); return SQ;}
+\"                          {printf("%s\n", yytext); return DQ;}
+
+"+"                         {printf("%s\n", yytext); return ADD;}
+"-"                         {printf("%s\n", yytext); return SUB;}
+"*"                         {printf("%s\n", yytext); return MUL;}
+"/"                         {printf("%s\n", yytext); return DIV;}
+
+"="                         {printf("%s\n", yytext); return ASSIGN;}
 "INT"                       {printf("%s\n", yytext); return INT;}
 "CHAR"                      {printf("%s\n", yytext); return CHAR;}
 "FUNCTION"                  {printf("%s\n", yytext); return FUNCTION;}
@@ -40,11 +50,9 @@ integer                     [0-9]+
 "ENDMAIN"                   {printf("%s\n", yytext); return ENDMAIN;}
 
 
-
 {id}                        {printf("%s\n", yytext); yylval.t_str = strdup(yytext); return ID;}
-{integer}                   {printf("%s\n", yytext); return integer;}
+{integer}                   {printf("%s\n", yytext); yylval.t_int = atoi(yytext); return INTEGER;}
 
 
 
 %%
-

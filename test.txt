@@ -1,11 +1,9 @@
 PROGRAM abc
 
-FUNCTION omegacringe(INT a, CHAR b)
+FUNCTION Omegacringe(INT a, CHAR b)
+var1 =  4 ;
 
-VARS INT int1, int2[4], intArray; 
-VARS CHAR char1, char2;
-
-RETURN int1;
+RETURN int1
 
 END_FUNCTION
 
