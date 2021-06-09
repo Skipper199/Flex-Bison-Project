@@ -14,6 +14,23 @@ var2 = var1 + 3;
 
 ENDWHILE
 
+FOR counter:=1 TO 100 STEP 2
+VARS INT testVar;
+
+ENDFOR
+
+IF (a>b) THEN
+  var2 = var1 + 3;
+ELSEIF (a>b)
+  var2 = var1 + 4;
+ELSEIF (a==b)
+  var2 = var1 + 5;
+ELSE
+  var2 = var1 + 6;
+ENDIF
+
+
+
 RETURN var1
 
 END_FUNCTION

@@ -38,6 +38,7 @@
 %token SC
 %token SQ
 %token DQ
+%token COLON
 %token ASSIGN
 %token EQUAL
 %token NOT_EQUAL
@@ -45,6 +46,15 @@
 %token GREATER_THAN
 %token WHILE
 %token ENDWHILE
+%token FOR
+%token ENDFOR
+%token TO
+%token STEP
+%token IF
+%token ELSEIF
+%token THEN
+%token ELSE
+%token ENDIF
 %token VARS
 %token RETURN
 %token STARTMAIN
@@ -117,6 +127,8 @@ programCommands: programCommand
 programCommand: varDeclaration
               | assign
               | while
+              | for
+              | if
               ;
 
 logical_operator: EQUAL
@@ -177,10 +189,33 @@ numericExpr: INTEGER { $$ = $1; }
            ;
 
 /************************************************************************************
-                                WHILE STATEMENT
+                                LOOP STATEMENTS
 ************************************************************************************/           
 
 while: WHILE OP logical_expr CP optionalNewLines programCommands ENDWHILE optionalNewLines
+     ;
+
+for: FOR ID COLON ASSIGN INTEGER TO INTEGER STEP INTEGER optionalNewLines programCommands ENDFOR optionalNewLines
+   ;
+
+/************************************************************************************
+                                IF STATEMENT
+************************************************************************************/
+
+if: IF OP logical_expr CP THEN optionalNewLines programCommands opt_else_if opt_else ENDIF optionalNewLines
+  ;
+
+opt_else_if: /* empty */
+           | else_if
+           ;
+
+else_if: ELSEIF OP logical_expr CP optionalNewLines programCommands
+       | else_if ELSEIF OP logical_expr CP optionalNewLines programCommands
+       ;
+
+opt_else: /* empty */
+        | ELSE optionalNewLines programCommands   
+        ;      
 
 /************************************************************************************
                                 RETURN STATEMENT

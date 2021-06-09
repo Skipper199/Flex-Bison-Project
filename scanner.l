@@ -30,6 +30,7 @@ integer                     [0-9]+
 "]"                         {printf("%s\n", yytext); return CB;}
 "'"                         {printf("%s\n", yytext); return SQ;}
 \"                          {printf("%s\n", yytext); return DQ;}
+":"                         {printf("%s\n", yytext); return COLON;}
 
 "+"                         {printf("%s\n", yytext); return ADD;}
 "-"                         {printf("%s\n", yytext); return SUB;}
@@ -44,6 +45,17 @@ integer                     [0-9]+
 
 "WHILE"                     {printf("%s\n", yytext); return WHILE;}
 "ENDWHILE"                  {printf("%s\n", yytext); return ENDWHILE;}
+"FOR"                       {printf("%s\n", yytext); return FOR;}
+"ENDFOR"                    {printf("%s\n", yytext); return ENDFOR;}
+"TO"                        {printf("%s\n", yytext); return TO;}
+"STEP"                      {printf("%s\n", yytext); return STEP;}
+
+"IF"                        {printf("%s\n", yytext); return IF;}
+"THEN"                      {printf("%s\n", yytext); return THEN;}
+"ELSEIF"                    {printf("%s\n", yytext); return ELSEIF;}
+"ELSE"                      {printf("%s\n", yytext); return ELSE;}
+"ENDIF"                     {printf("%s\n", yytext); return ENDIF;}
+
 "INT"                       {printf("%s\n", yytext); return INT;}
 "CHAR"                      {printf("%s\n", yytext); return CHAR;}
 "FUNCTION"                  {printf("%s\n", yytext); return FUNCTION;}

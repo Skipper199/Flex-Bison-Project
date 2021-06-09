@@ -72,19 +72,29 @@ extern int yydebug;
     SC = 273,                      /* SC  */
     SQ = 274,                      /* SQ  */
     DQ = 275,                      /* DQ  */
-    ASSIGN = 276,                  /* ASSIGN  */
-    EQUAL = 277,                   /* EQUAL  */
-    NOT_EQUAL = 278,               /* NOT_EQUAL  */
-    LOWER_THAN = 279,              /* LOWER_THAN  */
-    GREATER_THAN = 280,            /* GREATER_THAN  */
-    WHILE = 281,                   /* WHILE  */
-    ENDWHILE = 282,                /* ENDWHILE  */
-    VARS = 283,                    /* VARS  */
-    RETURN = 284,                  /* RETURN  */
-    STARTMAIN = 285,               /* STARTMAIN  */
-    ENDMAIN = 286,                 /* ENDMAIN  */
-    ID = 287,                      /* ID  */
-    INTEGER = 288                  /* INTEGER  */
+    COLON = 276,                   /* COLON  */
+    ASSIGN = 277,                  /* ASSIGN  */
+    EQUAL = 278,                   /* EQUAL  */
+    NOT_EQUAL = 279,               /* NOT_EQUAL  */
+    LOWER_THAN = 280,              /* LOWER_THAN  */
+    GREATER_THAN = 281,            /* GREATER_THAN  */
+    WHILE = 282,                   /* WHILE  */
+    ENDWHILE = 283,                /* ENDWHILE  */
+    FOR = 284,                     /* FOR  */
+    ENDFOR = 285,                  /* ENDFOR  */
+    TO = 286,                      /* TO  */
+    STEP = 287,                    /* STEP  */
+    IF = 288,                      /* IF  */
+    ELSEIF = 289,                  /* ELSEIF  */
+    THEN = 290,                    /* THEN  */
+    ELSE = 291,                    /* ELSE  */
+    ENDIF = 292,                   /* ENDIF  */
+    VARS = 293,                    /* VARS  */
+    RETURN = 294,                  /* RETURN  */
+    STARTMAIN = 295,               /* STARTMAIN  */
+    ENDMAIN = 296,                 /* ENDMAIN  */
+    ID = 297,                      /* ID  */
+    INTEGER = 298                  /* INTEGER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -110,19 +120,29 @@ extern int yydebug;
 #define SC 273
 #define SQ 274
 #define DQ 275
-#define ASSIGN 276
-#define EQUAL 277
-#define NOT_EQUAL 278
-#define LOWER_THAN 279
-#define GREATER_THAN 280
-#define WHILE 281
-#define ENDWHILE 282
-#define VARS 283
-#define RETURN 284
-#define STARTMAIN 285
-#define ENDMAIN 286
-#define ID 287
-#define INTEGER 288
+#define COLON 276
+#define ASSIGN 277
+#define EQUAL 278
+#define NOT_EQUAL 279
+#define LOWER_THAN 280
+#define GREATER_THAN 281
+#define WHILE 282
+#define ENDWHILE 283
+#define FOR 284
+#define ENDFOR 285
+#define TO 286
+#define STEP 287
+#define IF 288
+#define ELSEIF 289
+#define THEN 290
+#define ELSE 291
+#define ENDIF 292
+#define VARS 293
+#define RETURN 294
+#define STARTMAIN 295
+#define ENDMAIN 296
+#define ID 297
+#define INTEGER 298
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -134,7 +154,7 @@ union YYSTYPE
     int t_int;
     float t_float;
 
-#line 138 "y.tab.h"
+#line 158 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
