@@ -25,11 +25,19 @@ ELSEIF (a>b)
   var2 = var1 + 4;
 ELSEIF (a==b)
   var2 = var1 + 5;
+  BREAK;
 ELSE
   var2 = var1 + 6;
 ENDIF
 
+SWITCH(<lul>)
+CASE(<lul1>):
+var2 = var1 + 5;
+CASE(<lul2>):
+var2 = var1 + 5;
+ENDSWITCH
 
+PRINT("Hello World!");
 
 RETURN var1
 

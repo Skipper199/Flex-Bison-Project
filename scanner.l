@@ -15,6 +15,7 @@
 %option yylineno
       
 id                          [_a-zA-Z][_a-zA-Z0-9]*
+symbol                      [-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]
 integer                     [0-9]+
 
 %%
@@ -28,7 +29,6 @@ integer                     [0-9]+
 ")"                         {printf("%s\n", yytext); return CP;}
 "["                         {printf("%s\n", yytext); return OB;}
 "]"                         {printf("%s\n", yytext); return CB;}
-"'"                         {printf("%s\n", yytext); return SQ;}
 \"                          {printf("%s\n", yytext); return DQ;}
 ":"                         {printf("%s\n", yytext); return COLON;}
 
@@ -56,10 +56,17 @@ integer                     [0-9]+
 "ELSE"                      {printf("%s\n", yytext); return ELSE;}
 "ENDIF"                     {printf("%s\n", yytext); return ENDIF;}
 
+"SWITCH"                    {printf("%s\n", yytext); return SWITCH;}
+"ENDSWITCH"                 {printf("%s\n", yytext); return ENDSWITCH;}
+"CASE"                      {printf("%s\n", yytext); return CASE;}
+"DEFAULT"                   {printf("%s\n", yytext); return DEFAULT;}
+
 "INT"                       {printf("%s\n", yytext); return INT;}
 "CHAR"                      {printf("%s\n", yytext); return CHAR;}
 "FUNCTION"                  {printf("%s\n", yytext); return FUNCTION;}
 "END_FUNCTION"              {printf("%s\n", yytext); return END_FUNCTION;}
+"PRINT"                     {printf("%s\n", yytext); return PRINT;}
+"BREAK"                     {printf("%s\n", yytext); return BREAK;}
 ","                         {printf("%s\n", yytext); return COMMA;}
 ";"                         {printf("%s\n", yytext); return SC;}
 "VARS"                      {printf("%s\n", yytext); return VARS;}
@@ -69,6 +76,7 @@ integer                     [0-9]+
 
 
 {id}                        {printf("%s\n", yytext); yylval.t_str = strdup(yytext); return ID;}
+{symbol}                    {printf("%s\n", yytext); yylval.t_str = strdup(yytext); return SYMBOL;}
 {integer}                   {printf("%s\n", yytext); yylval.t_int = atoi(yytext); return INTEGER;}
 
 

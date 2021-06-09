@@ -70,31 +70,37 @@ extern int yydebug;
     OB = 271,                      /* OB  */
     CB = 272,                      /* CB  */
     SC = 273,                      /* SC  */
-    SQ = 274,                      /* SQ  */
-    DQ = 275,                      /* DQ  */
-    COLON = 276,                   /* COLON  */
-    ASSIGN = 277,                  /* ASSIGN  */
-    EQUAL = 278,                   /* EQUAL  */
-    NOT_EQUAL = 279,               /* NOT_EQUAL  */
-    LOWER_THAN = 280,              /* LOWER_THAN  */
-    GREATER_THAN = 281,            /* GREATER_THAN  */
-    WHILE = 282,                   /* WHILE  */
-    ENDWHILE = 283,                /* ENDWHILE  */
-    FOR = 284,                     /* FOR  */
-    ENDFOR = 285,                  /* ENDFOR  */
-    TO = 286,                      /* TO  */
-    STEP = 287,                    /* STEP  */
-    IF = 288,                      /* IF  */
-    ELSEIF = 289,                  /* ELSEIF  */
-    THEN = 290,                    /* THEN  */
-    ELSE = 291,                    /* ELSE  */
-    ENDIF = 292,                   /* ENDIF  */
-    VARS = 293,                    /* VARS  */
-    RETURN = 294,                  /* RETURN  */
-    STARTMAIN = 295,               /* STARTMAIN  */
-    ENDMAIN = 296,                 /* ENDMAIN  */
-    ID = 297,                      /* ID  */
-    INTEGER = 298                  /* INTEGER  */
+    DQ = 274,                      /* DQ  */
+    COLON = 275,                   /* COLON  */
+    ASSIGN = 276,                  /* ASSIGN  */
+    EQUAL = 277,                   /* EQUAL  */
+    NOT_EQUAL = 278,               /* NOT_EQUAL  */
+    LOWER_THAN = 279,              /* LOWER_THAN  */
+    GREATER_THAN = 280,            /* GREATER_THAN  */
+    WHILE = 281,                   /* WHILE  */
+    ENDWHILE = 282,                /* ENDWHILE  */
+    FOR = 283,                     /* FOR  */
+    ENDFOR = 284,                  /* ENDFOR  */
+    TO = 285,                      /* TO  */
+    STEP = 286,                    /* STEP  */
+    IF = 287,                      /* IF  */
+    ELSEIF = 288,                  /* ELSEIF  */
+    THEN = 289,                    /* THEN  */
+    ELSE = 290,                    /* ELSE  */
+    ENDIF = 291,                   /* ENDIF  */
+    SWITCH = 292,                  /* SWITCH  */
+    ENDSWITCH = 293,               /* ENDSWITCH  */
+    CASE = 294,                    /* CASE  */
+    DEFAULT = 295,                 /* DEFAULT  */
+    PRINT = 296,                   /* PRINT  */
+    BREAK = 297,                   /* BREAK  */
+    VARS = 298,                    /* VARS  */
+    RETURN = 299,                  /* RETURN  */
+    STARTMAIN = 300,               /* STARTMAIN  */
+    ENDMAIN = 301,                 /* ENDMAIN  */
+    ID = 302,                      /* ID  */
+    SYMBOL = 303,                  /* SYMBOL  */
+    INTEGER = 304                  /* INTEGER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -118,31 +124,37 @@ extern int yydebug;
 #define OB 271
 #define CB 272
 #define SC 273
-#define SQ 274
-#define DQ 275
-#define COLON 276
-#define ASSIGN 277
-#define EQUAL 278
-#define NOT_EQUAL 279
-#define LOWER_THAN 280
-#define GREATER_THAN 281
-#define WHILE 282
-#define ENDWHILE 283
-#define FOR 284
-#define ENDFOR 285
-#define TO 286
-#define STEP 287
-#define IF 288
-#define ELSEIF 289
-#define THEN 290
-#define ELSE 291
-#define ENDIF 292
-#define VARS 293
-#define RETURN 294
-#define STARTMAIN 295
-#define ENDMAIN 296
-#define ID 297
-#define INTEGER 298
+#define DQ 274
+#define COLON 275
+#define ASSIGN 276
+#define EQUAL 277
+#define NOT_EQUAL 278
+#define LOWER_THAN 279
+#define GREATER_THAN 280
+#define WHILE 281
+#define ENDWHILE 282
+#define FOR 283
+#define ENDFOR 284
+#define TO 285
+#define STEP 286
+#define IF 287
+#define ELSEIF 288
+#define THEN 289
+#define ELSE 290
+#define ENDIF 291
+#define SWITCH 292
+#define ENDSWITCH 293
+#define CASE 294
+#define DEFAULT 295
+#define PRINT 296
+#define BREAK 297
+#define VARS 298
+#define RETURN 299
+#define STARTMAIN 300
+#define ENDMAIN 301
+#define ID 302
+#define SYMBOL 303
+#define INTEGER 304
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -154,7 +166,7 @@ union YYSTYPE
     int t_int;
     float t_float;
 
-#line 158 "y.tab.h"
+#line 170 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

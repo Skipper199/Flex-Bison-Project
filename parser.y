@@ -36,7 +36,6 @@
 %token OB
 %token CB
 %token SC
-%token SQ
 %token DQ
 %token COLON
 %token ASSIGN
@@ -55,12 +54,20 @@
 %token THEN
 %token ELSE
 %token ENDIF
+%token SWITCH
+%token ENDSWITCH
+%token CASE
+%token DEFAULT
+%token PRINT
+%token BREAK
+
 %token VARS
 %token RETURN
 %token STARTMAIN
 %token ENDMAIN
 
 %token<t_float> ID
+%token<t_str> SYMBOL
 %token<t_int> INTEGER
 
 %type<t_int> numericExpr
@@ -103,11 +110,19 @@ type: INT
 
 value: ID
      | INTEGER
+     | SYMBOL
      ;
 
+sentence: value
+        | sentence value
+        ;
+
+opt_sentence: /* empty */
+            | sentence
+            ;
+
 string: /* empty */ 
-      | SQ ID SQ
-      | DQ ID DQ
+      | DQ opt_sentence DQ
       ;
 
 arguments: /* empty */
@@ -129,6 +144,9 @@ programCommand: varDeclaration
               | while
               | for
               | if
+              | switch
+              | print
+              | break
               ;
 
 logical_operator: EQUAL
@@ -216,6 +234,39 @@ else_if: ELSEIF OP logical_expr CP optionalNewLines programCommands
 opt_else: /* empty */
         | ELSE optionalNewLines programCommands   
         ;      
+
+/************************************************************************************
+                                SWITCH STATEMENT
+************************************************************************************/
+
+switch: SWITCH OP LOWER_THAN value GREATER_THAN CP optionalNewLines case opt_default ENDSWITCH optionalNewLines
+      ;
+
+case: CASE OP LOWER_THAN value GREATER_THAN CP COLON optionalNewLines programCommands
+    | case CASE OP LOWER_THAN value GREATER_THAN CP COLON optionalNewLines programCommands
+    ;
+
+opt_default: /* empty */
+           | DEFAULT COLON optionalNewLines programCommands
+           ;
+
+/************************************************************************************
+                                PRINT STATEMENT
+************************************************************************************/
+
+print: PRINT OP string opt_var CP SC optionalNewLines
+     ;
+
+opt_var: /* empty */
+       |OB COMMA ID CB
+       ;
+
+/************************************************************************************
+                                BREAK STATEMENT
+************************************************************************************/
+
+break: BREAK SC optionalNewLines
+     ;
 
 /************************************************************************************
                                 RETURN STATEMENT
