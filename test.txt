@@ -1,61 +1,66 @@
-PROGRAM abc
+PROGRAM myProgram
 
-FUNCTION omegacringe(INT a, CHAR b)
-VARS INT var1, var2[2];
-VARS CHAR var3, var4[5];
+FUNCTION myFunction(INT a, CHAR b)
+    VARS INT var1, var2[2];
+    VARS CHAR var3, var4[5];
 
-var1 =  var1;
+    var1 =  var1;
 
-WHILE(var1 > var2) 
+    WHILE(var1 > var2) 
+        var2 = var1 + 3;
+    ENDWHILE
 
+    FOR counter:=1 TO 100 STEP 2
+        VARS INT testVar;
+    ENDFOR
 
+    IF (a>b) THEN
+      var2 = var1 + 3;
 
-var2 = var1 + 3;
+    ELSEIF (a>b)
+      WHILE(var1 > var2) 
+          var2 = var1 + 3;
+      ENDWHILE
 
-ENDWHILE
+    ELSEIF (a==b)
+      var2 = var1 + 5;
+      BREAK;
 
-FOR counter:=1 TO 100 STEP 2
-VARS INT testVar;
+    ELSE
+      var2 = var1 + 6;
 
-ENDFOR
+    ENDIF
 
-IF (a>b) THEN
-  var2 = var1 + 3;
-ELSEIF (a>b)
-  WHILE(var1 > var2) 
+    SWITCH(<animals>)
+    CASE(<dog>):
+        var2 = var1 + 5;
 
+    CASE(<cat>):
+        var2 = var1 + 5;
+    DEFAULT:
+        var1 = var1 + 2;
 
+    ENDSWITCH % This is a comment
 
-  var2 = var1 + 3;
+    PRINT("Hello World!");
 
-  ENDWHILE
-ELSEIF (a==b)
-  var2 = var1 + 5;
-  BREAK;
-ELSE
-  var2 = var1 + 6;
-ENDIF
-
-SWITCH(<lul>)
-CASE(<lul1>):
-var2 = var1 + 5;
-CASE(<lul2>):
-var2 = var1 + 5;
-ENDSWITCH % WEFF
-PRINT("Hello World!");
-
-RETURN var1
+    RETURN var1
 
 END_FUNCTION
 
-FUNCTION omegacringe2(INT a, CHAR b)
-  RETURN var1
-END_FUNCTION
+FUNCTION mySecondFunction(INT a, INT b)
+    
+    a = b;
+    c = 5 / 6 + var1 * (var2 + 5 * 4 - 2);
 
-FUNCTION omegacringe3(INT a, CHAR b)
-RETURN var1
+    RETURN c
+
 END_FUNCTION
 
 STARTMAIN 
-  VARS CHAR var3, var4[5];
+    VARS INT myIntVar, myIntVar2;
+
+    myIntVar = myFunction(1 , b);
+    myIntVar2 = mySecondFunction(2 , 3);
+
 ENDMAIN

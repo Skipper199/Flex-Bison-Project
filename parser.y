@@ -137,13 +137,13 @@ string: /* empty */
       ;
 
 arguments: /* empty */
-         | ID
-         | arguments COMMA ID
+         | value
+         | arguments COMMA value
          ;
 
 parameters: /* empty */
-          | type ID 
-          | parameters COMMA type ID
+          | type value 
+          | parameters COMMA type value
           ;
 
 opt_programCommands: /* empty */
@@ -282,7 +282,6 @@ opt_var: /* empty */
 
 break: BREAK SC optionalNewLines
      ;
-
 
 /************************************************************************************
                                 RETURN STATEMENT

@@ -56,52 +56,51 @@ extern int yydebug;
     YYUNDEF = 257,                 /* "invalid token"  */
     PROGRAM = 258,                 /* PROGRAM  */
     NEWLINE = 259,                 /* NEWLINE  */
-    FUNCTION = 260,                /* FUNCTION  */
-    END_FUNCTION = 261,            /* END_FUNCTION  */
-    INT = 262,                     /* INT  */
-    ADD = 263,                     /* ADD  */
-    SUB = 264,                     /* SUB  */
-    MUL = 265,                     /* MUL  */
-    DIV = 266,                     /* DIV  */
-    COMMA = 267,                   /* COMMA  */
-    CHAR = 268,                    /* CHAR  */
-    OP = 269,                      /* OP  */
-    CP = 270,                      /* CP  */
-    OB = 271,                      /* OB  */
-    CB = 272,                      /* CB  */
-    SC = 273,                      /* SC  */
-    DQ = 274,                      /* DQ  */
-    COLON = 275,                   /* COLON  */
-    ASSIGN = 276,                  /* ASSIGN  */
-    EQUAL = 277,                   /* EQUAL  */
-    NOT_EQUAL = 278,               /* NOT_EQUAL  */
-    LOWER_THAN = 279,              /* LOWER_THAN  */
-    GREATER_THAN = 280,            /* GREATER_THAN  */
-    WHILE = 281,                   /* WHILE  */
-    ENDWHILE = 282,                /* ENDWHILE  */
-    FOR = 283,                     /* FOR  */
-    ENDFOR = 284,                  /* ENDFOR  */
-    TO = 285,                      /* TO  */
-    STEP = 286,                    /* STEP  */
-    IF = 287,                      /* IF  */
-    ELSEIF = 288,                  /* ELSEIF  */
-    THEN = 289,                    /* THEN  */
-    ELSE = 290,                    /* ELSE  */
-    ENDIF = 291,                   /* ENDIF  */
-    SWITCH = 292,                  /* SWITCH  */
-    ENDSWITCH = 293,               /* ENDSWITCH  */
-    CASE = 294,                    /* CASE  */
-    DEFAULT = 295,                 /* DEFAULT  */
-    PRINT = 296,                   /* PRINT  */
-    BREAK = 297,                   /* BREAK  */
-    COMMENT = 298,                 /* COMMENT  */
-    VARS = 299,                    /* VARS  */
-    RETURN = 300,                  /* RETURN  */
-    STARTMAIN = 301,               /* STARTMAIN  */
-    ENDMAIN = 302,                 /* ENDMAIN  */
+    OP = 260,                      /* OP  */
+    CP = 261,                      /* CP  */
+    OB = 262,                      /* OB  */
+    CB = 263,                      /* CB  */
+    DQ = 264,                      /* DQ  */
+    COLON = 265,                   /* COLON  */
+    COMMA = 266,                   /* COMMA  */
+    SC = 267,                      /* SC  */
+    ADD = 268,                     /* ADD  */
+    SUB = 269,                     /* SUB  */
+    MUL = 270,                     /* MUL  */
+    DIV = 271,                     /* DIV  */
+    ASSIGN = 272,                  /* ASSIGN  */
+    EQUAL = 273,                   /* EQUAL  */
+    NOT_EQUAL = 274,               /* NOT_EQUAL  */
+    LOWER_THAN = 275,              /* LOWER_THAN  */
+    GREATER_THAN = 276,            /* GREATER_THAN  */
+    WHILE = 277,                   /* WHILE  */
+    ENDWHILE = 278,                /* ENDWHILE  */
+    FOR = 279,                     /* FOR  */
+    ENDFOR = 280,                  /* ENDFOR  */
+    TO = 281,                      /* TO  */
+    STEP = 282,                    /* STEP  */
+    IF = 283,                      /* IF  */
+    THEN = 284,                    /* THEN  */
+    ELSEIF = 285,                  /* ELSEIF  */
+    ELSE = 286,                    /* ELSE  */
+    ENDIF = 287,                   /* ENDIF  */
+    SWITCH = 288,                  /* SWITCH  */
+    ENDSWITCH = 289,               /* ENDSWITCH  */
+    CASE = 290,                    /* CASE  */
+    DEFAULT = 291,                 /* DEFAULT  */
+    INT = 292,                     /* INT  */
+    CHAR = 293,                    /* CHAR  */
+    FUNCTION = 294,                /* FUNCTION  */
+    END_FUNCTION = 295,            /* END_FUNCTION  */
+    VARS = 296,                    /* VARS  */
+    RETURN = 297,                  /* RETURN  */
+    PRINT = 298,                   /* PRINT  */
+    BREAK = 299,                   /* BREAK  */
+    STARTMAIN = 300,               /* STARTMAIN  */
+    ENDMAIN = 301,                 /* ENDMAIN  */
+    SYMBOL = 302,                  /* SYMBOL  */
     ID = 303,                      /* ID  */
-    SYMBOL = 304,                  /* SYMBOL  */
-    INTEGER = 305                  /* INTEGER  */
+    INTEGER = 304                  /* INTEGER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -111,52 +110,51 @@ extern int yydebug;
 #define YYUNDEF 257
 #define PROGRAM 258
 #define NEWLINE 259
-#define FUNCTION 260
-#define END_FUNCTION 261
-#define INT 262
-#define ADD 263
-#define SUB 264
-#define MUL 265
-#define DIV 266
-#define COMMA 267
-#define CHAR 268
-#define OP 269
-#define CP 270
-#define OB 271
-#define CB 272
-#define SC 273
-#define DQ 274
-#define COLON 275
-#define ASSIGN 276
-#define EQUAL 277
-#define NOT_EQUAL 278
-#define LOWER_THAN 279
-#define GREATER_THAN 280
-#define WHILE 281
-#define ENDWHILE 282
-#define FOR 283
-#define ENDFOR 284
-#define TO 285
-#define STEP 286
-#define IF 287
-#define ELSEIF 288
-#define THEN 289
-#define ELSE 290
-#define ENDIF 291
-#define SWITCH 292
-#define ENDSWITCH 293
-#define CASE 294
-#define DEFAULT 295
-#define PRINT 296
-#define BREAK 297
-#define COMMENT 298
-#define VARS 299
-#define RETURN 300
-#define STARTMAIN 301
-#define ENDMAIN 302
+#define OP 260
+#define CP 261
+#define OB 262
+#define CB 263
+#define DQ 264
+#define COLON 265
+#define COMMA 266
+#define SC 267
+#define ADD 268
+#define SUB 269
+#define MUL 270
+#define DIV 271
+#define ASSIGN 272
+#define EQUAL 273
+#define NOT_EQUAL 274
+#define LOWER_THAN 275
+#define GREATER_THAN 276
+#define WHILE 277
+#define ENDWHILE 278
+#define FOR 279
+#define ENDFOR 280
+#define TO 281
+#define STEP 282
+#define IF 283
+#define THEN 284
+#define ELSEIF 285
+#define ELSE 286
+#define ENDIF 287
+#define SWITCH 288
+#define ENDSWITCH 289
+#define CASE 290
+#define DEFAULT 291
+#define INT 292
+#define CHAR 293
+#define FUNCTION 294
+#define END_FUNCTION 295
+#define VARS 296
+#define RETURN 297
+#define PRINT 298
+#define BREAK 299
+#define STARTMAIN 300
+#define ENDMAIN 301
+#define SYMBOL 302
 #define ID 303
-#define SYMBOL 304
-#define INTEGER 305
+#define INTEGER 304
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -168,7 +166,7 @@ union YYSTYPE
     int t_int;
     float t_float;
 
-#line 172 "y.tab.h"
+#line 170 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
