@@ -94,13 +94,14 @@ extern int yydebug;
     DEFAULT = 295,                 /* DEFAULT  */
     PRINT = 296,                   /* PRINT  */
     BREAK = 297,                   /* BREAK  */
-    VARS = 298,                    /* VARS  */
-    RETURN = 299,                  /* RETURN  */
-    STARTMAIN = 300,               /* STARTMAIN  */
-    ENDMAIN = 301,                 /* ENDMAIN  */
-    ID = 302,                      /* ID  */
-    SYMBOL = 303,                  /* SYMBOL  */
-    INTEGER = 304                  /* INTEGER  */
+    COMMENT = 298,                 /* COMMENT  */
+    VARS = 299,                    /* VARS  */
+    RETURN = 300,                  /* RETURN  */
+    STARTMAIN = 301,               /* STARTMAIN  */
+    ENDMAIN = 302,                 /* ENDMAIN  */
+    ID = 303,                      /* ID  */
+    SYMBOL = 304,                  /* SYMBOL  */
+    INTEGER = 305                  /* INTEGER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -148,13 +149,14 @@ extern int yydebug;
 #define DEFAULT 295
 #define PRINT 296
 #define BREAK 297
-#define VARS 298
-#define RETURN 299
-#define STARTMAIN 300
-#define ENDMAIN 301
-#define ID 302
-#define SYMBOL 303
-#define INTEGER 304
+#define COMMENT 298
+#define VARS 299
+#define RETURN 300
+#define STARTMAIN 301
+#define ENDMAIN 302
+#define ID 303
+#define SYMBOL 304
+#define INTEGER 305
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -166,7 +168,7 @@ union YYSTYPE
     int t_int;
     float t_float;
 
-#line 170 "y.tab.h"
+#line 172 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

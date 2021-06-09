@@ -22,7 +22,13 @@ ENDFOR
 IF (a>b) THEN
   var2 = var1 + 3;
 ELSEIF (a>b)
-  var2 = var1 + 4;
+  WHILE(var1 > var2) 
+
+
+
+  var2 = var1 + 3;
+
+  ENDWHILE
 ELSEIF (a==b)
   var2 = var1 + 5;
   BREAK;
@@ -35,13 +41,21 @@ CASE(<lul1>):
 var2 = var1 + 5;
 CASE(<lul2>):
 var2 = var1 + 5;
-ENDSWITCH
-
+ENDSWITCH % WEFF
 PRINT("Hello World!");
 
 RETURN var1
 
 END_FUNCTION
 
-STARTMAIN
+FUNCTION omegacringe2(INT a, CHAR b)
+  RETURN var1
+END_FUNCTION
+
+FUNCTION omegacringe3(INT a, CHAR b)
+RETURN var1
+END_FUNCTION
+
+STARTMAIN 
+  VARS CHAR var3, var4[5];
 ENDMAIN

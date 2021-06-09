@@ -8,8 +8,6 @@
     
 %}
 
-%x LINESTART
-%s NORMAL
 
 %option noyywrap
 %option yylineno
@@ -20,17 +18,18 @@ integer                     [0-9]+
 
 %%
 
-
-
-
 "PROGRAM"                   {printf("%s\n", yytext); return PROGRAM;}
+
 "\n"                        {return NEWLINE;}
+
 "("                         {printf("%s\n", yytext); return OP;}
 ")"                         {printf("%s\n", yytext); return CP;}
 "["                         {printf("%s\n", yytext); return OB;}
 "]"                         {printf("%s\n", yytext); return CB;}
 \"                          {printf("%s\n", yytext); return DQ;}
 ":"                         {printf("%s\n", yytext); return COLON;}
+","                         {printf("%s\n", yytext); return COMMA;}
+";"                         {printf("%s\n", yytext); return SC;}
 
 "+"                         {printf("%s\n", yytext); return ADD;}
 "-"                         {printf("%s\n", yytext); return SUB;}
@@ -45,6 +44,7 @@ integer                     [0-9]+
 
 "WHILE"                     {printf("%s\n", yytext); return WHILE;}
 "ENDWHILE"                  {printf("%s\n", yytext); return ENDWHILE;}
+
 "FOR"                       {printf("%s\n", yytext); return FOR;}
 "ENDFOR"                    {printf("%s\n", yytext); return ENDFOR;}
 "TO"                        {printf("%s\n", yytext); return TO;}
@@ -63,22 +63,25 @@ integer                     [0-9]+
 
 "INT"                       {printf("%s\n", yytext); return INT;}
 "CHAR"                      {printf("%s\n", yytext); return CHAR;}
+
 "FUNCTION"                  {printf("%s\n", yytext); return FUNCTION;}
 "END_FUNCTION"              {printf("%s\n", yytext); return END_FUNCTION;}
-"PRINT"                     {printf("%s\n", yytext); return PRINT;}
-"BREAK"                     {printf("%s\n", yytext); return BREAK;}
-","                         {printf("%s\n", yytext); return COMMA;}
-";"                         {printf("%s\n", yytext); return SC;}
+
 "VARS"                      {printf("%s\n", yytext); return VARS;}
+
 "RETURN"                    {printf("%s\n", yytext); return RETURN;}
+
+"PRINT"                     {printf("%s\n", yytext); return PRINT;}
+
+"BREAK"                     {printf("%s\n", yytext); return BREAK;}
+
 "STARTMAIN"                 {printf("%s\n", yytext); return STARTMAIN;}
 "ENDMAIN"                   {printf("%s\n", yytext); return ENDMAIN;}
 
-
-{id}                        {printf("%s\n", yytext); yylval.t_str = strdup(yytext); return ID;}
 {symbol}                    {printf("%s\n", yytext); yylval.t_str = strdup(yytext); return SYMBOL;}
+{id}                        {printf("%s\n", yytext); yylval.t_str = strdup(yytext); return ID;}
 {integer}                   {printf("%s\n", yytext); yylval.t_int = atoi(yytext); return INTEGER;}
 
-
+%.*"\n"                     {printf("SingleLineComment\n");}
 
 %%

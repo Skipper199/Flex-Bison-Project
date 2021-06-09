@@ -19,55 +19,67 @@
 
 
 %token PROGRAM
+
 %token NEWLINE
-%token FUNCTION
-%token END_FUNCTION
-%token INT
+
+%token OP
+%token CP
+%token OB
+%token CB
+%token DQ
+%token COLON
+%token COMMA
+%token SC
 
 %token ADD
 %token SUB
 %token MUL
 %token DIV
 
-%token COMMA
-%token CHAR
-%token OP
-%token CP
-%token OB
-%token CB
-%token SC
-%token DQ
-%token COLON
 %token ASSIGN
 %token EQUAL
 %token NOT_EQUAL
 %token LOWER_THAN
 %token GREATER_THAN
+
 %token WHILE
 %token ENDWHILE
+
 %token FOR
 %token ENDFOR
 %token TO
 %token STEP
+
 %token IF
-%token ELSEIF
 %token THEN
+%token ELSEIF
 %token ELSE
 %token ENDIF
+
 %token SWITCH
 %token ENDSWITCH
 %token CASE
 %token DEFAULT
-%token PRINT
-%token BREAK
+
+%token INT
+%token CHAR
+
+%token FUNCTION
+%token END_FUNCTION
 
 %token VARS
+
 %token RETURN
+
+%token PRINT
+
+%token BREAK
+
 %token STARTMAIN
 %token ENDMAIN
 
-%token<t_float> ID
 %token<t_str> SYMBOL
+%token<t_float> ID
 %token<t_int> INTEGER
 
 %type<t_int> numericExpr
@@ -82,18 +94,17 @@
                                 GENERAL STATEMENTS
 ************************************************************************************/
 
-root: program expressions main
+root: program opt_declareFunctions main
     ;
 
-expressions: expression
-           | expressions expression
-           ;
+opt_declareFunctions: /* empty */
+                    | declareFunctions
 
-expression: NEWLINE
-          | function
-          ;
+declareFunctions: function
+                | declareFunctions function
+                ;
 
-program: PROGRAM ID
+program: PROGRAM ID optionalNewLines
        ;
 
 newlines: NEWLINE
@@ -135,6 +146,10 @@ parameters: /* empty */
           | parameters COMMA type ID
           ;
 
+opt_programCommands: /* empty */
+                   | programCommands
+                   ;
+
 programCommands: programCommand
                | programCommands programCommand
                ;
@@ -162,14 +177,14 @@ logical_expr: value logical_operator value
                                 MAIN STATEMENT
 ************************************************************************************/
 
-main: STARTMAIN expressions ENDMAIN optionalNewLines
+main: STARTMAIN optionalNewLines opt_programCommands ENDMAIN optionalNewLines
     ;
 
 /************************************************************************************
                                 FUNCTION STATEMENT
 ************************************************************************************/
 
-function: FUNCTION ID OP parameters CP newlines programCommands return END_FUNCTION
+function: FUNCTION ID OP parameters CP newlines opt_programCommands return END_FUNCTION optionalNewLines
         ;
 
 /************************************************************************************
@@ -210,29 +225,29 @@ numericExpr: INTEGER { $$ = $1; }
                                 LOOP STATEMENTS
 ************************************************************************************/           
 
-while: WHILE OP logical_expr CP optionalNewLines programCommands ENDWHILE optionalNewLines
+while: WHILE OP logical_expr CP optionalNewLines opt_programCommands ENDWHILE optionalNewLines
      ;
 
-for: FOR ID COLON ASSIGN INTEGER TO INTEGER STEP INTEGER optionalNewLines programCommands ENDFOR optionalNewLines
+for: FOR ID COLON ASSIGN INTEGER TO INTEGER STEP INTEGER optionalNewLines opt_programCommands ENDFOR optionalNewLines
    ;
 
 /************************************************************************************
                                 IF STATEMENT
 ************************************************************************************/
 
-if: IF OP logical_expr CP THEN optionalNewLines programCommands opt_else_if opt_else ENDIF optionalNewLines
+if: IF OP logical_expr CP THEN optionalNewLines opt_programCommands opt_else_if opt_else ENDIF optionalNewLines
   ;
 
 opt_else_if: /* empty */
            | else_if
            ;
 
-else_if: ELSEIF OP logical_expr CP optionalNewLines programCommands
-       | else_if ELSEIF OP logical_expr CP optionalNewLines programCommands
+else_if: ELSEIF OP logical_expr CP optionalNewLines opt_programCommands
+       | else_if ELSEIF OP logical_expr CP optionalNewLines opt_programCommands
        ;
 
 opt_else: /* empty */
-        | ELSE optionalNewLines programCommands   
+        | ELSE optionalNewLines opt_programCommands   
         ;      
 
 /************************************************************************************
@@ -242,12 +257,12 @@ opt_else: /* empty */
 switch: SWITCH OP LOWER_THAN value GREATER_THAN CP optionalNewLines case opt_default ENDSWITCH optionalNewLines
       ;
 
-case: CASE OP LOWER_THAN value GREATER_THAN CP COLON optionalNewLines programCommands
-    | case CASE OP LOWER_THAN value GREATER_THAN CP COLON optionalNewLines programCommands
+case: CASE OP LOWER_THAN value GREATER_THAN CP COLON optionalNewLines opt_programCommands
+    | case CASE OP LOWER_THAN value GREATER_THAN CP COLON optionalNewLines opt_programCommands
     ;
 
 opt_default: /* empty */
-           | DEFAULT COLON optionalNewLines programCommands
+           | DEFAULT COLON optionalNewLines opt_programCommands
            ;
 
 /************************************************************************************
@@ -267,6 +282,7 @@ opt_var: /* empty */
 
 break: BREAK SC optionalNewLines
      ;
+
 
 /************************************************************************************
                                 RETURN STATEMENT
