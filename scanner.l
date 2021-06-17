@@ -61,8 +61,12 @@ integer                     [0-9]+
 "CASE"                      {printf("%s\n", yytext); return CASE;}
 "DEFAULT"                   {printf("%s\n", yytext); return DEFAULT;}
 
-"INT"                       {printf("%s\n", yytext); return INT;}
-"CHAR"                      {printf("%s\n", yytext); return CHAR;}
+"INT"                       {printf("%s\n", yytext); yylval.t_int = atoi(yytext); return INT;}
+"CHAR"                      {printf("%s\n", yytext); yylval.t_str = strdup(yytext); return CHAR;}
+
+"STRUCT"                    {printf("%s\n", yytext); return STRUCT;}
+"ENDSTRUCT"                 {printf("%s\n", yytext); return ENDSTRUCT;}
+"TYPEDEF"                   {printf("%s\n", yytext); return TYPEDEF;}
 
 "FUNCTION"                  {printf("%s\n", yytext); return FUNCTION;}
 "END_FUNCTION"              {printf("%s\n", yytext); return END_FUNCTION;}

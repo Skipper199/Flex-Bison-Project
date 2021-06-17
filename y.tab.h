@@ -90,17 +90,20 @@ extern int yydebug;
     DEFAULT = 291,                 /* DEFAULT  */
     INT = 292,                     /* INT  */
     CHAR = 293,                    /* CHAR  */
-    FUNCTION = 294,                /* FUNCTION  */
-    END_FUNCTION = 295,            /* END_FUNCTION  */
-    VARS = 296,                    /* VARS  */
-    RETURN = 297,                  /* RETURN  */
-    PRINT = 298,                   /* PRINT  */
-    BREAK = 299,                   /* BREAK  */
-    STARTMAIN = 300,               /* STARTMAIN  */
-    ENDMAIN = 301,                 /* ENDMAIN  */
-    SYMBOL = 302,                  /* SYMBOL  */
-    ID = 303,                      /* ID  */
-    INTEGER = 304                  /* INTEGER  */
+    STRUCT = 294,                  /* STRUCT  */
+    ENDSTRUCT = 295,               /* ENDSTRUCT  */
+    TYPEDEF = 296,                 /* TYPEDEF  */
+    FUNCTION = 297,                /* FUNCTION  */
+    END_FUNCTION = 298,            /* END_FUNCTION  */
+    VARS = 299,                    /* VARS  */
+    RETURN = 300,                  /* RETURN  */
+    PRINT = 301,                   /* PRINT  */
+    BREAK = 302,                   /* BREAK  */
+    STARTMAIN = 303,               /* STARTMAIN  */
+    ENDMAIN = 304,                 /* ENDMAIN  */
+    SYMBOL = 305,                  /* SYMBOL  */
+    ID = 306,                      /* ID  */
+    INTEGER = 307                  /* INTEGER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -144,17 +147,20 @@ extern int yydebug;
 #define DEFAULT 291
 #define INT 292
 #define CHAR 293
-#define FUNCTION 294
-#define END_FUNCTION 295
-#define VARS 296
-#define RETURN 297
-#define PRINT 298
-#define BREAK 299
-#define STARTMAIN 300
-#define ENDMAIN 301
-#define SYMBOL 302
-#define ID 303
-#define INTEGER 304
+#define STRUCT 294
+#define ENDSTRUCT 295
+#define TYPEDEF 296
+#define FUNCTION 297
+#define END_FUNCTION 298
+#define VARS 299
+#define RETURN 300
+#define PRINT 301
+#define BREAK 302
+#define STARTMAIN 303
+#define ENDMAIN 304
+#define SYMBOL 305
+#define ID 306
+#define INTEGER 307
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -166,7 +172,7 @@ union YYSTYPE
     int t_int;
     float t_float;
 
-#line 170 "y.tab.h"
+#line 176 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

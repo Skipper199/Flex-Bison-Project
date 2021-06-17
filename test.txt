@@ -1,5 +1,15 @@
 PROGRAM myProgram
 
+STRUCT Books
+    VARS CHAR title[50], author[50], subject[100];
+    VARS INT book_id;
+ENDSTRUCT
+
+TYPEDEF STRUCT Course
+    VARS CHAR title[50], teacher[50];
+    VARS INT course_id;
+Course ENDSTRUCT
+
 FUNCTION myFunction(INT a, CHAR b)
     VARS INT var1, var2[2];
     VARS CHAR var3, var4[5];
@@ -21,6 +31,10 @@ FUNCTION myFunction(INT a, CHAR b)
       WHILE(var1 > var2) 
           var2 = var1 + 3;
       ENDWHILE
+      
+      /*  This is a
+          multi line 
+          comment   */
 
     ELSEIF (a==b)
       var2 = var1 + 5;
@@ -31,6 +45,7 @@ FUNCTION myFunction(INT a, CHAR b)
 
     ENDIF
 
+
     SWITCH(<animals>)
     CASE(<dog>):
         var2 = var1 + 5;
@@ -40,7 +55,7 @@ FUNCTION myFunction(INT a, CHAR b)
     DEFAULT:
         var1 = var1 + 2;
 
-    ENDSWITCH % This is a comment
+    ENDSWITCH % This is a single line comment
 
     PRINT("Hello World!");
 

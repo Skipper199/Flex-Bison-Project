@@ -64,6 +64,10 @@
 %token INT
 %token CHAR
 
+%token STRUCT
+%token ENDSTRUCT
+%token TYPEDEF
+
 %token FUNCTION
 %token END_FUNCTION
 
@@ -94,7 +98,7 @@
                                 GENERAL STATEMENTS
 ************************************************************************************/
 
-root: program opt_declareFunctions main
+root: program opt_declareStructs opt_declareFunctions main
     ;
 
 opt_declareFunctions: /* empty */
@@ -103,6 +107,14 @@ opt_declareFunctions: /* empty */
 declareFunctions: function
                 | declareFunctions function
                 ;
+
+opt_declareStructs: /* empty */
+                  | declareStructs
+                  ;
+
+declareStructs: struct
+              | declareStructs struct
+              ;
 
 program: PROGRAM ID optionalNewLines
        ;
@@ -162,6 +174,7 @@ programCommand: varDeclaration
               | switch
               | print
               | break
+              | comment
               ;
 
 logical_operator: EQUAL
@@ -174,11 +187,12 @@ logical_expr: value logical_operator value
             ;
 
 /************************************************************************************
-                                MAIN STATEMENT
+                                STRUCTURE STATEMENT
 ************************************************************************************/
 
-main: STARTMAIN optionalNewLines opt_programCommands ENDMAIN optionalNewLines
-    ;
+struct: STRUCT ID newlines mul_varDeclaration ENDSTRUCT optionalNewLines
+      | TYPEDEF STRUCT ID newlines mul_varDeclaration ID ENDSTRUCT optionalNewLines
+      ;
 
 /************************************************************************************
                                 FUNCTION STATEMENT
@@ -186,6 +200,13 @@ main: STARTMAIN optionalNewLines opt_programCommands ENDMAIN optionalNewLines
 
 function: FUNCTION ID OP parameters CP newlines opt_programCommands return END_FUNCTION optionalNewLines
         ;
+
+/************************************************************************************
+                                MAIN STATEMENT
+************************************************************************************/
+
+main: STARTMAIN optionalNewLines opt_programCommands ENDMAIN optionalNewLines
+    ;
 
 /************************************************************************************
                             DECLARE VARIABLE STATEMENT
@@ -202,6 +223,10 @@ csv: ID
    | ID OB INTEGER CB
    | csv COMMA ID OB INTEGER CB
    ; 
+
+mul_varDeclaration: vars
+                  | mul_varDeclaration vars
+                  ;
 
 /************************************************************************************
                                 ASSIGN STATEMENT
@@ -282,6 +307,21 @@ opt_var: /* empty */
 
 break: BREAK SC optionalNewLines
      ;
+
+/************************************************************************************
+                                COMMENT STATEMENT
+************************************************************************************/
+
+commentBody: commentText
+           | commentBody commentText
+           ;
+
+commentText: NEWLINE
+           | value
+           ;
+
+comment: DIV MUL commentBody MUL DIV optionalNewLines
+       ;
 
 /************************************************************************************
                                 RETURN STATEMENT
